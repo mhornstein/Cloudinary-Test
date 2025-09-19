@@ -6,6 +6,7 @@ const TRANSFORMS = {
     overlay: "c_fit,l_text:Arial_50:Overlay%20Text,co_white",
     cartoon: "e_cartoonify",
     square: "c_fill,g_auto,w_333,ar_1",
+    gen_remove: "e_gen_remove:prompt_the%20bee",
     reset: ""
 };
 

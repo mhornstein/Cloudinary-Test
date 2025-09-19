@@ -24,11 +24,11 @@ const url_text = document.getElementById("url-text");
 const toggleDebug = document.getElementById("toggle-debug");
 const debugInfo = document.getElementById("debug-info");
 
+url_text.innerHTML = buildUrl(CLOUD_NAME, PUBLIC_ID); // initial URL
+
 toggleDebug.addEventListener("change", () => {
   debugInfo.style.display = toggleDebug.checked ? "block" : "none";
 });
-
-url_text.innerHTML = buildUrl(CLOUD_NAME, PUBLIC_ID); // initial URL
 
 group.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn[data-action]");

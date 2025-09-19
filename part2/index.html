@@ -26,6 +26,8 @@
         import { source } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/overlay";
         import { text } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/source";
         import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
+        import { fill } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/resize";
+        import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
 
         // 2. Configure your Cloudinary instance (replace "demo" with your cloud name)
         const cld = new Cloudinary({
@@ -41,7 +43,7 @@
             document.getElementById("main-img").src = cartoonImg.toURL();
         });
 
-        // Text overlay button
+        // 5. Text overlay button
         document.getElementById("text-btn").addEventListener("click", () => {
             const textOverlayImg = myImage.overlay(
                 source(
@@ -49,6 +51,17 @@
                 )
             );
             document.getElementById("main-img").src = textOverlayImg.toURL();
+        });
+
+        // 6. Crop to square button
+        document.getElementById("crop-btn").addEventListener("click", () => {
+            const croppedImg = myImage.resize(
+                fill()
+                    .width(333)
+                    .aspectRatio("1:1")
+                    .gravity(autoGravity())
+            );
+            document.getElementById("main-img").src = croppedImg.toURL();
         });
     </script>
 

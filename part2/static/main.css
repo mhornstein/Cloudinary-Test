@@ -15,7 +15,8 @@
 }
 .btn-group {
   margin: 0px 90px;
-  width: 600px;
+  width: 100%;
+  text-align: center;
   }
 .btn {
   margin: 10px;

@@ -18,6 +18,7 @@
             <div class="btn" id="crop-btn">Crop to square </div>
             <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
             <div class="btn" id="genremove-btn">Generative Remove</div>
+            <div class="btn" id="reset-btn">Reset</div>
         </div>
     </div>
     <script type="module">
@@ -38,6 +39,7 @@
 
         // 3. Reference the original image (replace "sample" with your image public ID)
         const myImage = cld.image("sample");
+        const originalUrl = myImage.toURL();
 
         // 4. Add event listener to apply cartoonify on button click
         document.getElementById("cartoon-btn").addEventListener("click", () => {
@@ -69,9 +71,14 @@
         // 7. Bonus 1: Generative Remove button
         document.getElementById("genremove-btn").addEventListener("click", () => {
             const removedImg = myImage.effect(
-                generativeRemove().prompt("the bee")
+                generativeRemove().prompt("bee")
             );
             document.getElementById("main-img").src = removedImg.toURL();
+        });
+
+        // 8. Reset button to original image
+        document.getElementById("reset-btn").addEventListener("click", () => {
+            document.getElementById("main-img").src = originalUrl;
         });
     </script>
 

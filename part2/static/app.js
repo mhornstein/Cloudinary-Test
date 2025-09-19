@@ -20,11 +20,18 @@ function buildUrl(transformation = "") {
 
 const img = document.getElementById("main-img");
 const group = document.querySelector(".btn-group");
+const url_text = document.getElementById("url-text");
+
+url_text.innerHTML = BASE_URL; // initial URL
 
 group.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn[data-action]");
-    if (!btn) return;
     const action = btn.dataset.action;
-    if (!(action in TRANSFORMS)) return;
-    img.src = buildUrl(TRANSFORMS[action]);
+
+    const trans = TRANSFORMS[action];
+    const fullUrl = buildUrl(trans);
+
+    img.src = fullUrl;
+    
+    url_text.innerHTML = fullUrl.replace(trans, `<b>${trans}</b>`);
 });

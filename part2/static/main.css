@@ -31,3 +31,13 @@
 .btn:active {
   transform: scale(0.98);
 }
+#debug-info {
+  clear: both; 
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  font-family: monospace;
+}
+#debug-info b {
+  color: #000;
+}

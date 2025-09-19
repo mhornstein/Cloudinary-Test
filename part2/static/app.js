@@ -21,6 +21,12 @@ function buildUrl(transformation = "") {
 const img = document.getElementById("main-img");
 const group = document.querySelector(".btn-group");
 const url_text = document.getElementById("url-text");
+const toggleDebug = document.getElementById("toggle-debug");
+const debugInfo = document.getElementById("debug-info");
+
+toggleDebug.addEventListener("change", () => {
+  debugInfo.style.display = toggleDebug.checked ? "block" : "none";
+});
 
 url_text.innerHTML = BASE_URL; // initial URL
 

@@ -23,6 +23,9 @@
         // 1. Import the Cloudinary class and the cartoonify effect
         import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
         import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
+        import { source } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/overlay";
+        import { text } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/source";
+        import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
 
         // 2. Configure your Cloudinary instance (replace "demo" with your cloud name)
         const cld = new Cloudinary({
@@ -37,7 +40,18 @@
             const cartoonImg = myImage.effect(cartoonify());
             document.getElementById("main-img").src = cartoonImg.toURL();
         });
+
+        // Text overlay button
+        document.getElementById("text-btn").addEventListener("click", () => {
+            const textOverlayImg = myImage.overlay(
+                source(
+                    text("Overlay Text", new TextStyle("Arial", 50)).textColor("white")
+                )
+            );
+            document.getElementById("main-img").src = textOverlayImg.toURL();
+        });
     </script>
+
 </body>
 
 </html>

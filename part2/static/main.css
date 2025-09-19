@@ -4,9 +4,14 @@
 }
 .main-photo {
   width: 500px;
-  height: 333px;
   border: 5px solid black;
   margin: 20px 0 20px 0;
+  display: inline-block;
+}
+.main-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .btn-group {
   margin: 0px 90px;

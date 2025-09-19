@@ -5,7 +5,7 @@ const BASE_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 const TRANSFORMS = {
     overlay: "c_fit,l_text:Arial_50:Overlay%20Text,co_white",
     cartoon: "e_cartoonify",
-    square: "c_fill,g_auto,w_500,ar_1",
+    square: "c_fill,g_auto,w_333,ar_1",
     reset: ""
 };
 

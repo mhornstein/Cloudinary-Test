@@ -1,6 +1,5 @@
 const CLOUD_NAME = "demo";
 const PUBLIC_ID = "sample.jpg";
-const BASE_URL = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload`;
 
 const TRANSFORMS = {
     overlay: "c_fit,l_text:Arial_50:Overlay%20Text,co_white",
@@ -10,11 +9,12 @@ const TRANSFORMS = {
     reset: ""
 };
 
-function buildUrl(transformation = "") {
+function buildUrl(cloudName, publicId, transformation = "") {
+  const baseUrl = `https://res.cloudinary.com/${cloudName}/image/upload`;
     if (transformation) {
-        return `${BASE_URL}/${transformation}/${PUBLIC_ID}`;
+        return `${baseUrl}/${transformation}/${publicId}`;
     } else {
-        return `${BASE_URL}/${PUBLIC_ID}`;
+        return `${baseUrl}/${publicId}`;
     }
 }
 
@@ -28,14 +28,14 @@ toggleDebug.addEventListener("change", () => {
   debugInfo.style.display = toggleDebug.checked ? "block" : "none";
 });
 
-url_text.innerHTML = BASE_URL; // initial URL
+url_text.innerHTML = buildUrl(CLOUD_NAME, PUBLIC_ID); // initial URL
 
 group.addEventListener("click", (e) => {
     const btn = e.target.closest(".btn[data-action]");
     const action = btn.dataset.action;
 
     const trans = TRANSFORMS[action];
-    const fullUrl = buildUrl(trans);
+    const fullUrl = buildUrl(CLOUD_NAME, PUBLIC_ID, trans);
 
     img.src = fullUrl;
     

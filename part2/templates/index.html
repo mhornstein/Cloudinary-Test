@@ -10,14 +10,17 @@
 <body>
     <div class="main">
         <div class="main-photo">
-            <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" width="500px" />
+            <img id="main-img" src="https://res.cloudinary.com/demo/image/upload/sample.jpg" width="500px" />
         </div>
         <div class="btn-group">
-            <div class="btn">Text overlay</div>
-            <div class="btn">Crop to square </div>
-            <div class="btn">Cartoonify <br>&nbsp;</br></div>
+            <div class="btn" data-action="overlay">Text overlay</div>
+            <div class="btn" data-action="square">Crop to square</div>
+            <div class="btn" data-action="cartoon">Cartoonify <br>&nbsp;</br></div>
+            <div class="btn" data-action="reset">Reset</div>
         </div>
     </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 
 </html>

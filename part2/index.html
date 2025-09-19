@@ -19,6 +19,25 @@
             <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
         </div>
     </div>
+    <script type="module">
+        // 1. Import the Cloudinary class and the cartoonify effect
+        import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
+        import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
+
+        // 2. Configure your Cloudinary instance (replace "demo" with your cloud name)
+        const cld = new Cloudinary({
+            cloud: { cloudName: "demo" }
+        });
+
+        // 3. Reference the original image (replace "sample" with your image public ID)
+        const myImage = cld.image("sample");
+
+        // 4. Add event listener to apply cartoonify on button click
+        document.getElementById("cartoon-btn").addEventListener("click", () => {
+            const cartoonImg = myImage.effect(cartoonify());
+            document.getElementById("main-img").src = cartoonImg.toURL();
+        });
+    </script>
 </body>
 
 </html>

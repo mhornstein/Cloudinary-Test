@@ -22,7 +22,6 @@
         </div>
     </div>
     <script type="module">
-        // 1. Import the Cloudinary class and the cartoonify effect
         import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
         import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
         import { source } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/overlay";
@@ -32,40 +31,37 @@
         import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
         import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 
-        const imageElement = document.getElementById("main-img");
+        const CLOUD_NAME = "demo";
+        const PUBLIC_ID = "sample";
 
-        // 2. Configure your Cloudinary instance (replace "demo" with your cloud name)
         const cld = new Cloudinary({
             cloud: { cloudName: "demo" }
         });
 
-        // 3. Reference the original image (replace "sample" with your image public ID)
         let myImage = cld.image("sample");
 
-        // 3.1 updta the image
-        function updateImage(imageElement, cloudinaryImage) {
+        function renderImage(imageElement, cloudinaryImage) {
             imageElement.src = cloudinaryImage.toURL();
         }
 
-        updateImage(imageElement, myImage);
+        const imgEl = document.getElementById("main-img");
 
-        // 4. Add event listener to apply cartoonify on button click
+        renderImage(imgEl, myImage);
+
         document.getElementById("cartoon-btn").addEventListener("click", () => {
             myImage.effect(cartoonify());
-            updateImage(imageElement, myImage);
+            renderImage(imgEl, myImage);
         });
 
-        // 5. Text overlay button
         document.getElementById("text-btn").addEventListener("click", () => {
             myImage.overlay(
                 source(
                     text("Overlay Text", new TextStyle("Arial", 50)).textColor("white")
                 )
             );
-            updateImage(imageElement, myImage);
+            renderImage(imgEl, myImage);
         });
 
-        // 6. Crop to square button
         document.getElementById("crop-btn").addEventListener("click", () => {
             myImage.resize(
                 fill()
@@ -73,21 +69,19 @@
                     .aspectRatio("1:1")
                     .gravity(autoGravity())
             );
-            updateImage(imageElement, myImage);
+            renderImage(imgEl, myImage);
         });
 
-        // 7. Bonus 1: Generative Remove button
         document.getElementById("genremove-btn").addEventListener("click", () => {
             myImage.effect(
                 generativeRemove().prompt("bee")
             );
-            updateImage(imageElement, myImage);
+            renderImage(imgEl, myImage);
         });
 
-        // 8. Reset button to original image
         document.getElementById("reset-btn").addEventListener("click", () => {
             myImage = cld.image("sample");
-            updateImage(imageElement, myImage);
+            renderImage(imgEl, myImage);
         });
     </script>
 

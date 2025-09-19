@@ -17,6 +17,7 @@
             <div class="btn" id="text-btn">Text overlay</div>
             <div class="btn" id="crop-btn">Crop to square </div>
             <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
+            <div class="btn" id="genremove-btn">Generative Remove</div>
         </div>
     </div>
     <script type="module">
@@ -28,6 +29,7 @@
         import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
         import { fill } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/resize";
         import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
+        import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 
         // 2. Configure your Cloudinary instance (replace "demo" with your cloud name)
         const cld = new Cloudinary({
@@ -62,6 +64,14 @@
                     .gravity(autoGravity())
             );
             document.getElementById("main-img").src = croppedImg.toURL();
+        });
+
+        // 7. Bonus 1: Generative Remove button
+        document.getElementById("genremove-btn").addEventListener("click", () => {
+            const removedImg = myImage.effect(
+                generativeRemove().prompt("the bee")
+            );
+            document.getElementById("main-img").src = removedImg.toURL();
         });
     </script>
 

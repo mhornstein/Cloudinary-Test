@@ -259,7 +259,8 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 
 **Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
 
-8. Reset button
+## 8. Reset button
+
 To wrap up the app, let’s add a reset button that restores the image to its original state.
 
 Add a click listener to the Reset button. When clicked, it creates a fresh CloudinaryImage pointing to the original asset and re-renders it:
@@ -271,4 +272,15 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 });
 ```
 
-The reset logic discards any transformations you’ve added to `myImage` by creating a new instance with the original public ID. The `renderImage` function then displays the untouched image again.
+## View the completed code
+
+You can find the full source code for this tutorial on [GitHub](placeholder-link).
+
+## Summary
+
+In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly and how the SDK makes them easy to apply with clean, reusable code.
+
+## Follow-up ideas
+Here are a few ideas to continue exploring and make this app better:
+1. **Try more transformations**: Check out [Cloudinary’s transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
+2. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.

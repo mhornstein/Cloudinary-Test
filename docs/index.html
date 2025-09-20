@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Cloudinary Demo</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-photo">
+            <img id="main-img" src="" width="500" />
+        </div>
+        <div class="btn-group">
+            <div class="btn" id="text-btn">Text overlay</div>
+            <div class="btn" id="crop-btn">Crop to square</div>
+            <div class="btn" id="cartoonify-btn">Cartoonify <br>&nbsp;</br></div>
+            <div class="btn" id="genremove-btn">Generative remove</div>
+            <div class="btn" id="reset-btn">Reset</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
+        import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
+        import { source } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/overlay";
+        import { text } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/source";
+        import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
+        import { fill } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/resize";
+        import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
+        import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
+
+        const CLOUD_NAME = "demo";
+        const PUBLIC_ID = "sample.jpg";
+
+        const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
+
+        let myImage = cld.image(PUBLIC_ID);
+
+        const imgEl = document.getElementById("main-img");
+
+        function renderImage(imageElement, cloudinaryImage) {
+            imageElement.src = cloudinaryImage.toURL();
+        }
+
+        renderImage(imgEl, myImage);
+
+        document.getElementById("cartoonify-btn").addEventListener("click", () => {
+            myImage.effect(cartoonify());
+            renderImage(imgEl, myImage);
+        });
+
+        document.getElementById("text-btn").addEventListener("click", () => {
+            myImage.overlay(
+                source(
+                    text("Text overlay", new TextStyle("Arial", 50)).textColor("white")
+                )
+            );
+            renderImage(imgEl, myImage);
+        });
+
+        document.getElementById("crop-btn").addEventListener("click", () => {
+            myImage.resize(
+                fill()
+                    .width(333)
+                    .aspectRatio("1:1")
+                    .gravity(autoGravity())
+            );
+            renderImage(imgEl, myImage);
+        });
+
+        document.getElementById("genremove-btn").addEventListener("click", () => {
+            myImage.effect(
+                generativeRemove().prompt("bee")
+            );
+            renderImage(imgEl, myImage);
+        });
+
+        document.getElementById("reset-btn").addEventListener("click", () => {
+            myImage = cld.image(PUBLIC_ID);
+            renderImage(imgEl, myImage);
+        });
+    </script>
+</body>
+
+</html>

@@ -216,7 +216,7 @@ Add a click listener to the **Text overlay** button. When clicked, it applies a 
 document.getElementById("text-btn").addEventListener("click", () => {
   myImage.overlay(
     source(
-      text("Overlay Text", new TextStyle("Arial", 50)).textColor("white")
+      text("Text overlay", new TextStyle("Arial", 50)).textColor("white")
     )
   );
   renderImage(imgEl, myImage);

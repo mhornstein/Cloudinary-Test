@@ -8,7 +8,7 @@ Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load i
 
 ## Overview
 
-In this tutorial, you’ll build a simple HTML/CSS/JS app that:
+In this tutorial, you'll build a simple HTML/CSS/JS app that:
 
 * Loads an image from Cloudinary.
 * Renders it in the browser.
@@ -16,14 +16,14 @@ In this tutorial, you’ll build a simple HTML/CSS/JS app that:
 
 **Time to complete:** 10 minutes.
 
-> **Note:** Cloudinary’s SDK includes many more transformations and options than we’ll cover here. This tutorial focuses on a few core examples and provides links to the docs if you’d like to explore further.
+> **Note:** Cloudinary's SDK includes many more transformations and options than we'll cover here. This tutorial focuses on a few core examples and provides links to the docs if you'd like to explore further.
 
 You can try out the final app here:
 \<placeholder for CodePen/GitHub link or embed>
 
 ---
 
-## Quick Background: Why It Matters?
+## Quick Background: Why It Matters
 
 ### Why use image transformations?
 
@@ -138,7 +138,7 @@ let myImage = cld.image(PUBLIC_ID);
 <details>
 <summary>More info about Configuration...</summary>
 
-The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance. Here we’re setting `cloudName` to the demo cloud, but you can replace it with your own. See the docs for all available options.
+The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance. Here we're setting `cloudName` to the demo cloud, but you can replace it with your own. See the docs for all available options.
 </details>
 <br>
 
@@ -185,7 +185,7 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
 <details>
 <summary>More info about transformations...</summary>
 
-There are many ways to transform your assets — find them all in the [Transformation reference](https://cloudinary.com/documentation/transformation_reference). You can also explore [alternative ways to apply transformations](https://cloudinary.com/documentation/javascript_image_transformations#alternative_ways_to_apply_transformations) with the JavaScript SDK.
+There are many ways to transform your assets - find them all in the [Transformation reference](https://cloudinary.com/documentation/transformation_reference). You can also explore [alternative ways to apply transformations](https://cloudinary.com/documentation/javascript_image_transformations#alternative_ways_to_apply_transformations) with the JavaScript SDK.
 </details>
 <details>
 <summary>More info about Cartoonify...</summary>
@@ -328,5 +328,5 @@ You can find the full source code for this tutorial on [GitHub](placeholder-link
 
 ## Follow-up ideas
 Here are a few ideas to continue exploring and make this app better:
-1. **Try more transformations**: Check out [Cloudinary’s transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
+1. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
 2. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.

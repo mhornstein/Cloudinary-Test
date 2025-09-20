@@ -156,18 +156,18 @@ renderImage(imgEl, myImage);
 
 ---
 
-## Step 3: Add the Cartoonify button
+## 4. Implement the Cartoonify effect
 
-To implement Cartoonify, add the following import statement:
+Import the effect:
 
 ```js
 import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 ```
 
-Add a click listener to the button. When clicked, apply the effect to the `CloudinaryImage` and re-render:
+Add a click listener to the **Cartoonify button**. When clicked, it applies the effect to the `CloudinaryImage` and re-render it using the `renderImage` function defined in the previous step:
 
 ```js
-cartoonBtn.addEventListener("click", () => {
+document.getElementById("cartoon-btn").addEventListener("click", () => {
   myImage.effect(cartoonify());
   renderImage(imgEl, myImage);
 });
@@ -179,3 +179,99 @@ cartoonBtn.addEventListener("click", () => {
 
 📷 **Screen state at this step:** 
 
+## 5. Implement text overlay
+
+Import the text overlay action:
+
+```js
+import { source } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/overlay";
+import { text } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/source";
+import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
+```
+
+Add a click listener to the **Text overlay** button. When clicked, it applies a text overlay to the CloudinaryImage and re-renders:
+
+```js
+document.getElementById("text-btn").addEventListener("click", () => {
+  myImage.overlay(
+    source(
+      text("Overlay Text", new TextStyle("Arial", 50)).textColor("white")
+    )
+  );
+  renderImage(imgEl, myImage);
+});
+```
+
+### What's happening
+The `overlay()` method adds a text layer on top of the base image. In this example, the text is 'Overlay Text', styled with the Arial font, size 50, and white color. 
+
+**Try it yourself:** experiment with different fonts, sizes, and colors.
+
+## 5. Implement Crop to square
+Import the resize action and gravity qualifier:
+
+```js
+import { fill } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
+```
+
+Add a click listener to the **Crop to square** button. When clicked, it resizes the `CloudinaryImage` to a 1:1 aspect ratio and re-renders it:
+
+```js
+document.getElementById("crop-btn").addEventListener("click", () => {
+  myImage.resize(
+    fill()
+      .width(333)
+      .aspectRatio("1:1")
+      .gravity(autoGravity())
+  );
+  renderImage(imgEl, myImage);
+});
+```
+
+### What’s happening
+
+The `resize().fill()` method crops and resizes the image to fit the specified dimensions. Here, we set the width to 333 pixels and enforce a 1:1 aspect ratio, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+
+**Try it yourself:** Adjust the width or aspect ratio values to experiment with different crops, or remove the `.gravity(autoGravity())` command to see its effect.
+
+## 7. Generative Remove
+
+Let's add some AI magic with a generative effect. As before, start by importing the generative remove effect:
+
+```js
+import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
+```
+
+Add a click listener to the **Generative Remove** button. When clicked, it applies the effect with a prompt and then re-renders:
+
+```js
+document.getElementById("genremove-btn").addEventListener("click", () => {
+  myImage.effect(
+    generativeRemove().prompt("bee")
+  );
+  renderImage(imgEl, myImage);
+});
+```
+
+### What's happening
+
+`generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
+
+**Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
+
+8. Reset button
+To wrap up the app, let’s add a reset button that restores the image to its original state.
+
+Add a click listener to the Reset button. When clicked, it creates a fresh CloudinaryImage pointing to the original asset and re-renders it:
+
+```js
+document.getElementById("reset-btn").addEventListener("click", () => {
+  myImage = cld.image("sample");
+  renderImage(imgEl, myImage);
+});
+```
+
+### What’s happening
+
+The reset logic discards any transformations you’ve added to `myImage` by creating a new instance with the original public ID. The `renderImage` function then displays the untouched image again.

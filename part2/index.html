@@ -35,16 +35,16 @@
         const PUBLIC_ID = "sample";
 
         const cld = new Cloudinary({
-            cloud: { cloudName: "demo" }
+            cloud: { cloudName: CLOUD_NAME }
         });
 
-        let myImage = cld.image("sample");
+        let myImage = cld.image(PUBLIC_ID);
+
+        const imgEl = document.getElementById("main-img");
 
         function renderImage(imageElement, cloudinaryImage) {
             imageElement.src = cloudinaryImage.toURL();
         }
-
-        const imgEl = document.getElementById("main-img");
 
         renderImage(imgEl, myImage);
 

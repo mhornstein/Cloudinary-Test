@@ -135,6 +135,14 @@ const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
 let myImage = cld.image(PUBLIC_ID);
 ```
+<details>
+<summary>More info about Configuration...</summary>
+
+The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance.  
+Here we’re setting `cloudName` to the demo cloud, but you can replace it with your own.  
+See the docs for all available options.
+</details>
+<br>
 
 This example connects to the Cloudinary demo account (`demo`), which already includes the `sample.jpg` image. Later, you can swap in your own cloud name and asset.
 
@@ -176,6 +184,21 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+<details>
+<summary>More info about transformations...</summary>
+
+There are many ways to transform your assets — find them all in the  
+[Transformation reference](https://cloudinary.com/documentation/transformation_reference).  
+You can also explore  
+[alternative ways to apply transformations](https://cloudinary.com/documentation/javascript_image_transformations#alternative_ways_to_apply_transformations) with the JavaScript SDK.
+</details>
+<details>
+<summary>More info about Cartoonify...</summary>
+
+Learn more about the effect and its options in the  
+[Cartoonify docs](https://cloudinary.com/documentation/transformation_reference#e_cartoonify).
+</details>
+<br>
 
 `myImage` works like a builder: each call (such as `.effect(cartoonify())`) adds another step to the transformation pipeline. That's why you can reuse the same instance and just re-render it.
 
@@ -205,6 +228,13 @@ document.getElementById("text-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+<details>
+<summary>More info about text overlays...</summary>
+
+See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays)  
+for fonts, styling, positioning, and encoding.
+</details>
+<br>
 
 The `overlay()` method adds a text layer on top of the base image. In this example, the text is 'Overlay Text', styled with the Arial font, size 50, and white color. 
 
@@ -236,6 +266,13 @@ document.getElementById("crop-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+<details>
+<summary>More info about resizing & cropping...</summary>
+
+Read about [image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping),  
+including helpers like `gravity` and `aspect_ratio` used in this example.
+</details>
+<br>
 
 The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels, and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
@@ -261,6 +298,13 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+<details>
+<summary>More info about Generative Remove...</summary>
+
+Learn how prompts work, explore available parameters, and try other generative effects in the  
+[Generative Remove docs](https://cloudinary.com/documentation/generative_ai_transformations#generative_remove).
+</details>
+<br>
 
 `generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
 

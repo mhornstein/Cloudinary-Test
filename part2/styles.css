@@ -5,7 +5,7 @@
 .main-photo {
   width: 500px;
   border: 5px solid black;
-  margin: 20px 0 20px 0;
+  margin: 20px 0;
   display: inline-block;
 }
 .main-photo img {
@@ -16,10 +16,10 @@
 .btn-group {
   width: 100%;
   text-align: center;
-  }
+}
 .btn {
   margin: 10px;
-  padding: 2px 5px 2px 5px;
+  padding: 2px 5px;
   float: left;
   width: 70px;
   border: 1px solid black;

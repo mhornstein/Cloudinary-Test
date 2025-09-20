@@ -16,6 +16,8 @@ In this tutorial, you’ll build a simple HTML/CSS/JS app that:
 
 **Time to complete:** 10 minutes.
 
+> **Note:** Cloudinary’s SDK includes many more transformations and options than we’ll cover here. This tutorial focuses on a few core examples and provides links to the docs if you’d like to explore further.
+
 You can try out the final app here:
 \<placeholder for CodePen/GitHub link or embed>
 

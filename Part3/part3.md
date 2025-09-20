@@ -112,7 +112,7 @@ This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, t
   cursor: pointer;
 }
 ```
-This is the page you should expect to see rendered is:
+This is the page you should expect to see rendered:
 
 ![Scaffold step screenshot](images/1-scaffold.jpg)
 

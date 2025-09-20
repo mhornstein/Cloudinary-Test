@@ -2,9 +2,7 @@
 
 ## Meta description
 
-Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing and overlays, and even lets you experiment with AI-powered effects.
-
----
+Build a simple HTML/CSS/JS app with the Cloudinary JavaScript SDK to load images, apply transformations, and experiment with AI-powered effects.
 
 ## Overview
 
@@ -16,14 +14,12 @@ In this tutorial, you'll build a simple HTML/CSS/JS app that:
 
 **Time to complete:** 10 minutes.
 
-> **Note:** Cloudinary's SDK includes many more transformations and options than we'll cover here. This tutorial focuses on a few core examples and provides links to the docs if you'd like to explore further.
+> **Note:** Cloudinary's SDK includes many more transformations and options than we'll cover here. This tutorial focuses on a few core examples and provides links to the docs for further exploration.
 
 You can try out the final app here:
 \<placeholder for CodePen/GitHub link or embed>
 
----
-
-## Quick Background: Why It Matters
+## Quick Background
 
 ### Why use image transformations?
 
@@ -33,11 +29,9 @@ Transformations let you dynamically resize, crop, adjust quality, and apply effe
 
 Transformations can be applied by manually constructing delivery URLs. However, the JavaScript SDK makes this process simpler and less error-prone by providing a clear, chainable API for defining transformations in code. Behind the scenes, both approaches achieve the same result.
 
----
-
 ## 1. Prepare the HTML and CSS scaffold
 
-This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, the HTML and CSS are provided for you.
+The HTML and CSS are provided so you can focus entirely on the JavaScript SDK.
 
 **Project layout**
 
@@ -65,7 +59,7 @@ This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, t
     <div class="btn-group">
       <div class="btn" id="text-btn">Text overlay</div>
       <div class="btn" id="crop-btn">Crop to square</div>
-      <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
+      <div class="btn" id="cartoonify-btn">Cartoonify <br>&nbsp;</br></div>
       <div class="btn" id="genremove-btn">Generative remove</div>
       <div class="btn" id="reset-btn">Reset</div>
     </div>
@@ -116,15 +110,13 @@ This is the page you should expect to see rendered:
 
 ![Scaffold step screenshot](images/1-scaffold.jpg)
 
-The page shows an empty image frame (just the border) with the row of buttons underneath. The image area is intentionally blank because the `<img>` element has no `src`. You'll populate it with an image in Step 2.
+The page shows an empty image frame (just the border) with the row of buttons underneath. 
 
----
+The image area is intentionally blank because the `<img>` element has no `src`. You'll populate it with an image in Step 3.
 
 ## 2. Load an image from Cloudinary
 
-From this step onward, you'll only be working in the JavaScript section of the project.
-
-Replace the comment placeholder in `index.html` with the following code. It imports the URL-Gen SDK and creates a `CloudinaryImage` object, which represents an image stored in a Cloudinary account.
+Replace the placeholder comment inside the `<script>` tag (in `index.html`) with the following JavaScript code. It imports the Cloudinary JavaScript SDK (URL Generation) and creates a `CloudinaryImage` object, which represents an image stored in a Cloudinary account.
 
 ```js
 import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
@@ -136,20 +128,17 @@ const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
 let myImage = cld.image(PUBLIC_ID);
 ```
+This example connects to the Cloudinary demo account (`demo`), which already includes the `sample.jpg` image.
+
 <details>
 <summary>More info about Configuration...</summary>
 
-The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance. Here we're setting `cloudName` to the demo cloud, but you can replace it with your own. See the docs for all available options.
+The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance. Here we're setting `cloudName` to the `demo` cloud, but you can replace it with your own. See the docs for all available options.
 </details>
-<br>
-
-This example connects to the Cloudinary demo account (`demo`), which already includes the `sample.jpg` image. Later, you can swap in your own cloud name and asset.
-
----
 
 ## 3. Render the image
 
-Add the following code to update the `<img>` element's src with the URL generated from the `CloudinaryImage` object. A helper function keeps the code reusable:
+Add the following code to update the `<img>` element's src with the URL generated from the `CloudinaryImage` object. The `renderImage` helper function makes the code reusable.
 
 ```js
 const imgEl = document.getElementById("main-img");
@@ -162,8 +151,6 @@ renderImage(imgEl, myImage);
 ```
 
 ![Scaffold step screenshot](images/3-rendered.jpg)
-
----
 
 ## 4. Implement the Cartoonify effect
 
@@ -178,11 +165,15 @@ import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/
 Add a click listener to the **Cartoonify button**. When clicked, it applies the effect to the `CloudinaryImage` and re-renders it using the `renderImage` function defined in the previous step:
 
 ```js
-document.getElementById("cartoon-btn").addEventListener("click", () => {
+document.getElementById("cartoonify-btn").addEventListener("click", () => {
   myImage.effect(cartoonify());
   renderImage(imgEl, myImage);
 });
 ```
+`myImage` works like a builder: each call (such as `.effect(cartoonify())`) adds another step to the transformation pipeline. That's why you can reuse the same instance and just re-render it.
+
+![Scaffold step screenshot](images/4-cartoonify.jpg)
+
 <details>
 <summary>More info about transformations...</summary>
 
@@ -193,15 +184,10 @@ There are many ways to transform your assets - find them all in the [Transformat
 
 Learn more about the effect and its options in the [Cartoonify docs](https://cloudinary.com/documentation/transformation_reference#e_cartoonify).
 </details>
-<br>
-
-`myImage` works like a builder: each call (such as `.effect(cartoonify())`) adds another step to the transformation pipeline. That's why you can reuse the same instance and just re-render it.
-
-![Scaffold step screenshot](images/4-cartoonify.jpg)
 
 ## 5. Implement text overlay
 
-Sometimes you just need words on your image - like a caption, a label, or a quick note - and with overlays you can add them in seconds without making a new copy of the image every time.
+Sometimes you might need words on your image - like a caption, a label, or a quick note - and with overlays you can add them in seconds without making a new copy of the image every time.
 
 Import the text overlay action:
 
@@ -211,7 +197,7 @@ import { text } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/sou
 import { TextStyle } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/textStyle";
 ```
 
-Add a click listener to the **Text overlay** button. When clicked, it applies a text overlay to the CloudinaryImage and re-renders:
+Add a click listener to the **Text overlay** button. When clicked, it applies a text overlay to the CloudinaryImage and re-renders.
 
 ```js
 document.getElementById("text-btn").addEventListener("click", () => {
@@ -223,18 +209,28 @@ document.getElementById("text-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
-<details>
-<summary>More info about text overlays...</summary>
+The `overlay()` method adds a text layer on top of the base image. In this example, the text is "Text overlay", styled with the Arial font, size 50, and white color. 
 
-See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays) for fonts, styling, positioning, and encoding.
-</details>
-<br>
-
-The `overlay()` method adds a text layer on top of the base image. In this example, the text is 'Overlay Text', styled with the Arial font, size 50, and white color. 
+**Try it yourself:** experiment with different fonts, sizes, and colors.
 
 ![Scaffold step screenshot](images/5-text.jpg)
 
-**Try it yourself:** experiment with different fonts, sizes, and colors.
+<details>
+<summary>More info about actions vs. effects...</summary>
+
+In the Cloudinary SDK, **actions** and **effects** serve different purposes:
+
+- **Actions** describe transformations that *change the structure* of your asset. For example, `overlay()` places text on top of the original asset.
+- **Effects** (like `cartoonify()`) apply *visual filters or stylistic changes* to the asset.
+
+Both are part of the same transformation pipeline, and you can stack actions with effects.
+</details>
+
+<details>
+<summary>More info about text overlays...</summary>
+
+See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays) to learn more about about fonts, styling, positioning, and encoding.
+</details>
 
 ## 6. Implement Crop to square
 
@@ -260,18 +256,29 @@ document.getElementById("crop-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
-<details>
-<summary>More info about resizing & cropping...</summary>
 
-Read about [image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping),including helpers like `gravity` and `aspect_ratio` used in this example.
-</details>
-<br>
+The `resize().fill()` method crops and resizes the image to fit the specified dimensions. Here, the width is set to 333 pixels and the aspect ratio to 1:1, producing a square image. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
-The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels, and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+**Try it yourself:** Adjust the width or aspect ratio values to experiment with different crops, or remove the `.gravity(autoGravity())` command to see its effect.
 
 ![Scaffold step screenshot](images/6-crop.jpg)
 
-**Try it yourself:** Adjust the width or aspect ratio values to experiment with different crops, or remove the `.gravity(autoGravity())` command to see its effect.
+<details>
+<summary>More info about qualifiers...</summary>
+
+In the Cloudinary SDK, **qualifiers** provide extra details that shape how an action behaves.  
+Think of them as parameters or settings you attach to an action:
+
+- For example, in a resize action, `autoGravity()` is a qualifier that tells Cloudinary which part of the image to keep in focus.  
+- In a text overlay, `TextStyle("Arial", 50)` is a qualifier that defines the font and size of the text.
+
+Qualifiers don't do anything on their own - they *qualify* an action like `resize()` or `overlay()` to make it more specific.
+</details>
+<details>
+<summary>More info about resizing & cropping...</summary>
+
+Read more about [image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping), including qualifiers like `gravity` and `aspect_ratio` used in this example.
+</details>
 
 ## 7. Generative Remove
 
@@ -291,18 +298,18 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+
+`generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
+
+**Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
+
+![Scaffold step screenshot](images/7-generative.jpg)
+
 <details>
 <summary>More info about Generative Remove...</summary>
 
 Learn how prompts work, explore available parameters, and try other generative effects in the [Generative Remove docs](https://cloudinary.com/documentation/generative_ai_transformations#generative_remove).
 </details>
-<br>
-
-`generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
-
-![Scaffold step screenshot](images/7-generative.jpg)
-
-**Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
 
 ## 8. Reset button
 
@@ -312,12 +319,12 @@ Add a click listener to the Reset button. When clicked, it creates a fresh Cloud
 
 ```js
 document.getElementById("reset-btn").addEventListener("click", () => {
-  myImage = cld.image("sample");
+  myImage = cld.image(PUBLIC_ID);
   renderImage(imgEl, myImage);
 });
 ```
 
-Why recreate the object? Each transformation you apply - such as crop, overlay, or effect - is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
+Why recreate the object? Each transformation you apply - such as crop, overlay, or cartoonify - is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
 
 ## Summary
 
@@ -328,7 +335,7 @@ In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cl
 You can find the full source code for this tutorial on [GitHub](placeholder-link).
 
 ## Follow-up ideas
-Here are a few ideas to continue exploring and make this app better:
+Here are some ideas to keep exploring:
 1. **Stack transformations**: Try applying several transformations in a row (for example, add text, then crop, then cartoonify) to see how they accumulate on the same image.
 2. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
 3. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.

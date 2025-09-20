@@ -1,8 +1,8 @@
-# Tutorial: Image Transformations Using the JavaScript SDK
+# Tutorial: Apply Image Transformations with the JavaScript SDK
 
 ## Meta description
 
-In this tutorial, you will build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing, cropping, and effects.
+Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing, text overlays, and effects.
 
 ---
 
@@ -12,26 +12,30 @@ In this tutorial, you’ll build a simple HTML/CSS/JS app that:
 
 * Loads an image from Cloudinary.
 * Renders it in the browser.
-* Applies a transformation (Cartoonify) at the click of a button.
+* Applies a transformation at the click of a button.
 
-You can try out the final product here:
+**Time to complete:** 10 minutes.
+
+You can try out the final app here:
 \<placeholder for CodePen/GitHub link or embed>
 
 ---
 
-## Why transformations are important
+## Introduction
 
-Transformations let you dynamically resize, crop, adjust quality, and apply effects to your media. This ensures every user receives an optimized version—without needing to create or store multiple files.
+### Why use image transformations?
 
-## Why the JavaScript SDK is important
+Transformations let you dynamically resize, crop, adjust quality, and apply effects to your media. This ensures every user receives an optimized version without needing to create or store multiple files.
+
+### Why use the JavaScript SDK?
 
 Transformations can be applied by manually constructing delivery URLs. However, the JavaScript SDK makes this process simpler and less error-prone by providing a clear, chainable API for defining transformations in code. Behind the scenes, both approaches achieve the same result.
 
 ---
 
-## Step 0: Base HTML & CSS
+## 1. Prepare the HTML and CSS scaffold
 
-For this tutorial, only the Cloudinary JavaScript SDK is required. The HTML and CSS are already provided.
+This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, the HTML and CSS are provided for you.
 
 **Project layout**
 
@@ -40,8 +44,6 @@ For this tutorial, only the Cloudinary JavaScript SDK is required. The HTML and 
 ├─ index.html
 └─ styles.css
 ```
-
-> Note: The `<img>` element has an intentionally empty `src`. We’ll populate it with a Cloudinary image in Step 2.
 
 ### index.html
 
@@ -109,36 +111,36 @@ For this tutorial, only the Cloudinary JavaScript SDK is required. The HTML and 
 }
 ```
 
-📷 **Screen state at this step:** The page shows an empty image frame (just the border) and the row of buttons underneath. The image area is intentionally blank.
+📷 Sceen placeholder.
+
+The page shows an empty image frame (just the border) with the row of buttons underneath. The image area is intentionally blank because the `<img>` element has no `src`. We'll populate it with an image in Step 2.
 
 ---
 
-## Step 1: Load an image from Cloudinary
+## 2. Load an image from Cloudinary
 
-Start by importing the **URL-Gen SDK** and creating a `CloudinaryImage` object. This object represents an image in your Cloudinary account and allows you to apply transformations. (For videos, use `CloudinaryVideo`.)
+From this step onward, we'll only update the JavaScript section of our project.
 
-For now, use Cloudinary’s **demo cloud** and its public `sample` image. Later, replace these with your own cloud name and any public ID of an asset you’ve uploaded.
-
-See [Quick Start: Account and Media Setup](https://cloudinary.com/documentation/quick_start#account_and_media_setup) to locate your cloud name and public IDs.
+Replace the comment placeholder in `index.html` with the following code. It imports the URL-Gen SDK and creates a `CloudinaryImage object`, which represents an image stored in a Cloudinary account.
 
 ```js
 import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
 
 const CLOUD_NAME = "demo";
-const PUBLIC_ID  = "sample";
+const PUBLIC_ID  = "sample.jpg";
 
 const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
 let myImage = cld.image(PUBLIC_ID);
 ```
 
-📷 **Screen state at this step:** The page layout is the same as Step 0 (empty image area), but now you have a `CloudinaryImage` object ready in your JavaScript. Nothing is displayed yet because we haven’t rendered the image.
+In this example, we use the Cloudinary demo account (`demo`), which already contains the `sample.jpg` image. Later, you can replace these with your own cloud name and asset by following the instructions at the end of this tutorial.
 
 ---
 
-## Step 2: Render the image
+## Step 3: Render the image
 
-Update the `<img>` element’s `src` with the URL generated from the `CloudinaryImage` object. A helper function keeps the code reusable:
+Add the following code to update the `<img>` element's src with the URL generated from the `CloudinaryImage` object. A helper function keeps the code reusable:
 
 ```js
 const imgEl = document.getElementById("main-img");
@@ -150,13 +152,13 @@ function renderImage(imageElement, cloudinaryImage) {
 renderImage(imgEl, myImage);
 ```
 
-📷 **Screen state at this step:** The image frame now displays the `sample` image from Cloudinary. You should see the photo inside the bordered area, above the buttons.
+📷 **Screen state at this step**
 
 ---
 
 ## Step 3: Add the Cartoonify button
 
-To implement **Cartoonify**, import the effect:
+To implement Cartoonify, add the following import statement:
 
 ```js
 import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
@@ -173,16 +175,7 @@ cartoonBtn.addEventListener("click", () => {
 
 ### What’s happening
 
-* `myImage` is a **mutable builder object**.
-* Each call (such as `.effect(cartoonify())`) appends a transformation.
-* The same instance can be reused and simply re-rendered after changes.
+`myImage` is a **mutable builder object**. Each call you make, such as `.effect(cartoonify())`, appends a transformation to it. Because of this, the same instance can be reused and simply re-rendered after changes.
 
-📷 **Screen state at this step:** When you click the **Cartoonify** button, the original image in the frame is updated to a cartoon-style version of itself.
+📷 **Screen state at this step:** 
 
----
-
-✅ At this point, you have a working demo app that loads an image from Cloudinary and applies the Cartoonify transformation with one click.
-
----
-
-Would you like me to also phrase those **screen state notes** as bold inline notes (like Cloudinary docs sometimes do: “**Result:** …”) instead of separate “📷 placeholders”? That would make it even closer to their doc style.

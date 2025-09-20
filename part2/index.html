@@ -8,19 +8,19 @@
 </head>
 
 <body>
-
     <div class="main">
         <div class="main-photo">
-            <img id="main-img" src="" width="500px" />
+            <img id="main-img" src="" width="500" />
         </div>
         <div class="btn-group">
             <div class="btn" id="text-btn">Text overlay</div>
-            <div class="btn" id="crop-btn">Crop to square </div>
+            <div class="btn" id="crop-btn">Crop to square</div>
             <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
-            <div class="btn" id="genremove-btn">Generative Remove</div>
+            <div class="btn" id="genremove-btn">Generative remove</div>
             <div class="btn" id="reset-btn">Reset</div>
         </div>
     </div>
+
     <script type="module">
         import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
         import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
@@ -32,11 +32,9 @@
         import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 
         const CLOUD_NAME = "demo";
-        const PUBLIC_ID = "sample";
+        const PUBLIC_ID = "sample.jpg";
 
-        const cld = new Cloudinary({
-            cloud: { cloudName: CLOUD_NAME }
-        });
+        const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
         let myImage = cld.image(PUBLIC_ID);
 
@@ -56,7 +54,7 @@
         document.getElementById("text-btn").addEventListener("click", () => {
             myImage.overlay(
                 source(
-                    text("Overlay Text", new TextStyle("Arial", 50)).textColor("white")
+                    text("Text overlay", new TextStyle("Arial", 50)).textColor("white")
                 )
             );
             renderImage(imgEl, myImage);
@@ -84,7 +82,6 @@
             renderImage(imgEl, myImage);
         });
     </script>
-
 </body>
 
 </html>

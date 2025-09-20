@@ -16,8 +16,7 @@ In this tutorial, you'll build a simple HTML/CSS/JS app that:
 
 > **Note:** Cloudinary's SDK includes many more transformations and options than we'll cover here. This tutorial focuses on a few core examples and provides links to the docs for further exploration.
 
-You can try out the final app here:
-\<placeholder for CodePen/GitHub link or embed>
+You can explore the completed app here: [Live Demo](https://mhornstein.github.io/Cloudinary-Test/)
 
 ## Quick Background
 
@@ -332,7 +331,7 @@ In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cl
 
 ## View the completed code
 
-You can find the full source code for this tutorial on [GitHub](placeholder-link).
+You can find the full source code for this tutorial on [GitHub](https://github.com/mhornstein/Cloudinary-Test/tree/main/part2).
 
 ## Follow-up ideas
 Here are some ideas to keep exploring:

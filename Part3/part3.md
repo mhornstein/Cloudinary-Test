@@ -329,5 +329,6 @@ You can find the full source code for this tutorial on [GitHub](placeholder-link
 
 ## Follow-up ideas
 Here are a few ideas to continue exploring and make this app better:
-1. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
-2. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.
+1. **Stack transformations**: Try applying several transformations in a row (for example, add text, then crop, then cartoonify) to see how they accumulate on the same image.
+2. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
+3. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.

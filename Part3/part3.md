@@ -1,8 +1,8 @@
-# Tutorial: Apply Image Transformations with the JavaScript SDK
+# Tutorial: Build an Interactive Image Transformer with Cloudinary's JS SDK
 
 ## Meta description
 
-Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing, text overlays, and effects.
+Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing and overlays, and even experiment with AI-powered effects.
 
 ---
 
@@ -21,7 +21,7 @@ You can try out the final app here:
 
 ---
 
-## Introduction
+## Short Background: Why It Matters?
 
 ### Why use image transformations?
 
@@ -113,13 +113,13 @@ This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, t
 
 📷 Sceen placeholder.
 
-The page shows an empty image frame (just the border) with the row of buttons underneath. The image area is intentionally blank because the `<img>` element has no `src`. We'll populate it with an image in Step 2.
+The page shows an empty image frame (just the border) with the row of buttons underneath. The image area is intentionally blank because the `<img>` element has no `src`. You'll populate it with an image in Step 2.
 
 ---
 
 ## 2. Load an image from Cloudinary
 
-From this step onward, we'll only update the JavaScript section of our project.
+From this step onward, you'll only be working in the JavaScript section of the project.
 
 Replace the comment placeholder in `index.html` with the following code. It imports the URL-Gen SDK and creates a `CloudinaryImage object`, which represents an image stored in a Cloudinary account.
 
@@ -134,11 +134,11 @@ const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 let myImage = cld.image(PUBLIC_ID);
 ```
 
-In this example, we use the Cloudinary demo account (`demo`), which already contains the `sample.jpg` image. Later, you can replace these with your own cloud name and asset by following the instructions at the end of this tutorial.
+This example connects to the Cloudinary demo account (`demo`), which already includes the `sample.jpg` image. Later, you can swap in your own cloud name and asset.
 
 ---
 
-## Step 3: Render the image
+## 3. Render the image
 
 Add the following code to update the `<img>` element's src with the URL generated from the `CloudinaryImage` object. A helper function keeps the code reusable:
 
@@ -206,7 +206,7 @@ The `overlay()` method adds a text layer on top of the base image. In this examp
 
 **Try it yourself:** experiment with different fonts, sizes, and colors.
 
-## 5. Implement Crop to square
+## 6. Implement Crop to square
 Import the resize action and gravity qualifier:
 
 ```js
@@ -228,7 +228,7 @@ document.getElementById("crop-btn").addEventListener("click", () => {
 });
 ```
 
-The `resize().fill()` method crops and resizes the image to fit the specified dimensions. Here, we set the width to 333 pixels and enforce a 1:1 aspect ratio, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels and enforce a 1:1 aspect ratio, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
 📷 Sceen placeholder.
 
@@ -271,6 +271,8 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
+
+Why recreate the object? Each transformation you apply - such as crop, overlay, or effect - is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
 
 ## View the completed code
 

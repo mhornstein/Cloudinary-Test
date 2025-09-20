@@ -15,7 +15,7 @@
         <div class="btn-group">
             <div class="btn" id="text-btn">Text overlay</div>
             <div class="btn" id="crop-btn">Crop to square</div>
-            <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
+            <div class="btn" id="cartoonify-btn">Cartoonify <br>&nbsp;</br></div>
             <div class="btn" id="genremove-btn">Generative remove</div>
             <div class="btn" id="reset-btn">Reset</div>
         </div>
@@ -46,7 +46,7 @@
 
         renderImage(imgEl, myImage);
 
-        document.getElementById("cartoon-btn").addEventListener("click", () => {
+        document.getElementById("cartoonify-btn").addEventListener("click", () => {
             myImage.effect(cartoonify());
             renderImage(imgEl, myImage);
         });
@@ -78,7 +78,7 @@
         });
 
         document.getElementById("reset-btn").addEventListener("click", () => {
-            myImage = cld.image("sample");
+            myImage = cld.image(PUBLIC_ID);
             renderImage(imgEl, myImage);
         });
     </script>

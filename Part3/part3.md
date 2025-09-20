@@ -138,9 +138,7 @@ let myImage = cld.image(PUBLIC_ID);
 <details>
 <summary>More info about Configuration...</summary>
 
-The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance.  
-Here we’re setting `cloudName` to the demo cloud, but you can replace it with your own.  
-See the docs for all available options.
+The SDK supports various [configuration parameters](https://cloudinary.com/documentation/cloudinary_sdks#configuration_parameters) when creating the `Cloudinary` instance. Here we’re setting `cloudName` to the demo cloud, but you can replace it with your own. See the docs for all available options.
 </details>
 <br>
 
@@ -187,16 +185,12 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
 <details>
 <summary>More info about transformations...</summary>
 
-There are many ways to transform your assets — find them all in the  
-[Transformation reference](https://cloudinary.com/documentation/transformation_reference).  
-You can also explore  
-[alternative ways to apply transformations](https://cloudinary.com/documentation/javascript_image_transformations#alternative_ways_to_apply_transformations) with the JavaScript SDK.
+There are many ways to transform your assets — find them all in the [Transformation reference](https://cloudinary.com/documentation/transformation_reference). You can also explore [alternative ways to apply transformations](https://cloudinary.com/documentation/javascript_image_transformations#alternative_ways_to_apply_transformations) with the JavaScript SDK.
 </details>
 <details>
 <summary>More info about Cartoonify...</summary>
 
-Learn more about the effect and its options in the  
-[Cartoonify docs](https://cloudinary.com/documentation/transformation_reference#e_cartoonify).
+Learn more about the effect and its options in the [Cartoonify docs](https://cloudinary.com/documentation/transformation_reference#e_cartoonify).
 </details>
 <br>
 
@@ -231,8 +225,7 @@ document.getElementById("text-btn").addEventListener("click", () => {
 <details>
 <summary>More info about text overlays...</summary>
 
-See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays)  
-for fonts, styling, positioning, and encoding.
+See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays) for fonts, styling, positioning, and encoding.
 </details>
 <br>
 
@@ -269,8 +262,7 @@ document.getElementById("crop-btn").addEventListener("click", () => {
 <details>
 <summary>More info about resizing & cropping...</summary>
 
-Read about [image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping),  
-including helpers like `gravity` and `aspect_ratio` used in this example.
+Read about [image resizing and cropping](https://cloudinary.com/documentation/resizing_and_cropping),including helpers like `gravity` and `aspect_ratio` used in this example.
 </details>
 <br>
 
@@ -301,8 +293,7 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 <details>
 <summary>More info about Generative Remove...</summary>
 
-Learn how prompts work, explore available parameters, and try other generative effects in the  
-[Generative Remove docs](https://cloudinary.com/documentation/generative_ai_transformations#generative_remove).
+Learn how prompts work, explore available parameters, and try other generative effects in the [Generative Remove docs](https://cloudinary.com/documentation/generative_ai_transformations#generative_remove).
 </details>
 <br>
 

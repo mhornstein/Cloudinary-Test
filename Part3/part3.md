@@ -235,7 +235,7 @@ document.getElementById("crop-btn").addEventListener("click", () => {
 });
 ```
 
-The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels, and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
 📷 Sceen placeholder.
 
@@ -249,7 +249,7 @@ Let's add some AI magic with a generative effect. As before, start by importing 
 import { generativeRemove } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 ```
 
-Add a click listener to the **Generative Remove** button. When clicked, it applies the effect with a prompt and then re-renders:
+Add a click listener to the **Generative remove** button. When clicked, it applies the effect with a prompt and then re-renders:
 
 ```js
 document.getElementById("genremove-btn").addEventListener("click", () => {
@@ -268,7 +268,7 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 
 ## 8. Reset button
 
-To wrap up the app, let's add a reset button that restores the image to its original state. That's way, if things get out of hand, the Reset button takes you back to square one.
+To wrap up the app, let's add a reset button that restores the image to its original state. That way, if things get out of hand, the Reset button takes you back to square one.
 
 Add a click listener to the Reset button. When clicked, it creates a fresh CloudinaryImage pointing to the original asset and re-renders it:
 
@@ -283,7 +283,7 @@ Why recreate the object? Each transformation you apply - such as crop, overlay, 
 
 ## Summary
 
-In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly and how the SDK makes them easy to apply with clean, reusable code.
+In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly, and how the SDK makes them easy to apply with clean, reusable code.
 
 ## View the completed code
 

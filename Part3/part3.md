@@ -112,8 +112,9 @@ This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, t
   cursor: pointer;
 }
 ```
+This is the page you should expect to see rendered is:
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/1-scaffold.jpg)
 
 The page shows an empty image frame (just the border) with the row of buttons underneath. The image area is intentionally blank because the `<img>` element has no `src`. You'll populate it with an image in Step 2.
 
@@ -160,7 +161,7 @@ function renderImage(imageElement, cloudinaryImage) {
 renderImage(imgEl, myImage);
 ```
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/3-rendered.jpg)
 
 ---
 
@@ -196,7 +197,7 @@ Learn more about the effect and its options in the [Cartoonify docs](https://clo
 
 `myImage` works like a builder: each call (such as `.effect(cartoonify())`) adds another step to the transformation pipeline. That's why you can reuse the same instance and just re-render it.
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/4-cartoonify.jpg)
 
 ## 5. Implement text overlay
 
@@ -231,7 +232,7 @@ See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_o
 
 The `overlay()` method adds a text layer on top of the base image. In this example, the text is 'Overlay Text', styled with the Arial font, size 50, and white color. 
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/5-text.jpg)
 
 **Try it yourself:** experiment with different fonts, sizes, and colors.
 
@@ -268,7 +269,7 @@ Read about [image resizing and cropping](https://cloudinary.com/documentation/re
 
 The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels, and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/6-crop.jpg)
 
 **Try it yourself:** Adjust the width or aspect ratio values to experiment with different crops, or remove the `.gravity(autoGravity())` command to see its effect.
 
@@ -299,7 +300,7 @@ Learn how prompts work, explore available parameters, and try other generative e
 
 `generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
 
-📷 Sceen placeholder.
+![Scaffold step screenshot](images/7-generative.jpg)
 
 **Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
 

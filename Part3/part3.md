@@ -2,7 +2,7 @@
 
 ## Meta description
 
-Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing and overlays, and even experiment with AI-powered effects.
+Build a simple HTML/CSS/JS app that uses the Cloudinary JavaScript SDK to load images and apply transformations like resizing and overlays, and even lets you experiment with AI-powered effects.
 
 ---
 
@@ -12,7 +12,7 @@ In this tutorial, you’ll build a simple HTML/CSS/JS app that:
 
 * Loads an image from Cloudinary.
 * Renders it in the browser.
-* Applies a transformation at the click of a button.
+* Lets you apply transformations with a single click.
 
 **Time to complete:** 10 minutes.
 
@@ -64,7 +64,7 @@ This tutorial focuses on the Cloudinary JavaScript SDK. To keep things simple, t
       <div class="btn" id="text-btn">Text overlay</div>
       <div class="btn" id="crop-btn">Crop to square</div>
       <div class="btn" id="cartoon-btn">Cartoonify <br>&nbsp;</br></div>
-      <div class="btn" id="genremove-btn">Generative Remove</div>
+      <div class="btn" id="genremove-btn">Generative remove</div>
       <div class="btn" id="reset-btn">Reset</div>
     </div>
   </div>
@@ -121,7 +121,7 @@ The page shows an empty image frame (just the border) with the row of buttons un
 
 From this step onward, you'll only be working in the JavaScript section of the project.
 
-Replace the comment placeholder in `index.html` with the following code. It imports the URL-Gen SDK and creates a `CloudinaryImage object`, which represents an image stored in a Cloudinary account.
+Replace the comment placeholder in `index.html` with the following code. It imports the URL-Gen SDK and creates a `CloudinaryImage` object, which represents an image stored in a Cloudinary account.
 
 ```js
 import { Cloudinary } from "https://cdn.skypack.dev/@cloudinary/url-gen";
@@ -166,7 +166,7 @@ Import the effect:
 import { cartoonify } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/effect";
 ```
 
-Add a click listener to the **Cartoonify button**. When clicked, it applies the effect to the `CloudinaryImage` and re-render it using the `renderImage` function defined in the previous step:
+Add a click listener to the **Cartoonify button**. When clicked, it applies the effect to the `CloudinaryImage` and re-renders it using the `renderImage` function defined in the previous step:
 
 ```js
 document.getElementById("cartoon-btn").addEventListener("click", () => {
@@ -175,7 +175,7 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
 });
 ```
 
-`myImage` is a **mutable builder object**. Each call you make, such as `.effect(cartoonify())`, appends a transformation to it. Because of this, the same instance can be reused and simply re-rendered after changes.
+`myImage` works like a builder: each call (such as `.effect(cartoonify())`) adds another step to the transformation pipeline. That's why you can reuse the same instance and just re-render it.
 
 📷 Sceen placeholder.
 
@@ -235,7 +235,7 @@ document.getElementById("crop-btn").addEventListener("click", () => {
 });
 ```
 
-The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels and enforce a 1:1 aspect ratio, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+The `resize().fill()` method crops and resizes the image to fit the specified dimensions. In this case, the width is set to 333 pixels and a 1:1 aspect ratio is enforced, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
 
 📷 Sceen placeholder.
 
@@ -268,7 +268,7 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 
 ## 8. Reset button
 
-To wrap up the app, let’s add a reset button that restores the image to its original state.
+To wrap up the app, let's add a reset button that restores the image to its original state. That's way, if things get out of hand, the Reset button takes you back to square one.
 
 Add a click listener to the Reset button. When clicked, it creates a fresh CloudinaryImage pointing to the original asset and re-renders it:
 
@@ -281,13 +281,13 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 
 Why recreate the object? Each transformation you apply - such as crop, overlay, or effect - is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
 
-## View the completed code
-
-You can find the full source code for this tutorial on [GitHub](placeholder-link).
-
 ## Summary
 
 In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly and how the SDK makes them easy to apply with clean, reusable code.
+
+## View the completed code
+
+You can find the full source code for this tutorial on [GitHub](placeholder-link).
 
 ## Follow-up ideas
 Here are a few ideas to continue exploring and make this app better:

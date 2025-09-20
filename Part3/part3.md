@@ -152,7 +152,7 @@ function renderImage(imageElement, cloudinaryImage) {
 renderImage(imgEl, myImage);
 ```
 
-📷 **Screen state at this step**
+📷 Sceen placeholder.
 
 ---
 
@@ -173,11 +173,9 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
 });
 ```
 
-### What’s happening
-
 `myImage` is a **mutable builder object**. Each call you make, such as `.effect(cartoonify())`, appends a transformation to it. Because of this, the same instance can be reused and simply re-rendered after changes.
 
-📷 **Screen state at this step:** 
+📷 Sceen placeholder.
 
 ## 5. Implement text overlay
 
@@ -202,8 +200,9 @@ document.getElementById("text-btn").addEventListener("click", () => {
 });
 ```
 
-### What's happening
 The `overlay()` method adds a text layer on top of the base image. In this example, the text is 'Overlay Text', styled with the Arial font, size 50, and white color. 
+
+📷 Sceen placeholder.
 
 **Try it yourself:** experiment with different fonts, sizes, and colors.
 
@@ -229,9 +228,9 @@ document.getElementById("crop-btn").addEventListener("click", () => {
 });
 ```
 
-### What’s happening
-
 The `resize().fill()` method crops and resizes the image to fit the specified dimensions. Here, we set the width to 333 pixels and enforce a 1:1 aspect ratio, which makes the image a square. The `autoGravity()` setting automatically selects the most important region of the image (like a face or object) so the crop stays focused.
+
+📷 Sceen placeholder.
 
 **Try it yourself:** Adjust the width or aspect ratio values to experiment with different crops, or remove the `.gravity(autoGravity())` command to see its effect.
 
@@ -254,9 +253,9 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 });
 ```
 
-### What's happening
-
 `generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
+
+📷 Sceen placeholder.
 
 **Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
 
@@ -271,7 +270,5 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   renderImage(imgEl, myImage);
 });
 ```
-
-### What’s happening
 
 The reset logic discards any transformations you’ve added to `myImage` by creating a new instance with the original public ID. The `renderImage` function then displays the untouched image again.

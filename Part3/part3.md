@@ -21,7 +21,7 @@ You can try out the final app here:
 
 ---
 
-## Short Background: Why It Matters?
+## Quick Background: Why It Matters?
 
 ### Why use image transformations?
 
@@ -158,6 +158,8 @@ renderImage(imgEl, myImage);
 
 ## 4. Implement the Cartoonify effect
 
+Cartoonify is the easiest effect to try, and it instantly turns your image into a fun, cartoon-like style.
+
 Import the effect:
 
 ```js
@@ -178,6 +180,8 @@ document.getElementById("cartoon-btn").addEventListener("click", () => {
 📷 Sceen placeholder.
 
 ## 5. Implement text overlay
+
+Sometimes you just need words on your image - like a caption, a label, or a quick note - and with overlays you can add them in seconds without making a new copy of the image every time.
 
 Import the text overlay action:
 
@@ -207,6 +211,9 @@ The `overlay()` method adds a text layer on top of the base image. In this examp
 **Try it yourself:** experiment with different fonts, sizes, and colors.
 
 ## 6. Implement Crop to square
+
+Cropping is one of the most common edits, and Cloudinary gives you powerful tools to make it effortless while still delivering great results.
+
 Import the resize action and gravity qualifier:
 
 ```js

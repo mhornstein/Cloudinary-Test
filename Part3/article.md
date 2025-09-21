@@ -329,7 +329,7 @@ Why recreate the object? Each transformation you apply is appended to the same `
 
 In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly, and how the SDK makes them easy to implement with clean, reusable code.
 
-## View the completed code
+## View the complete code
 
 You can find the full source code for this tutorial on [GitHub](https://github.com/mhornstein/Cloudinary-Test/tree/main/part2).
 

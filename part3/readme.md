@@ -4,7 +4,7 @@ This repo contains a tutorial on building a simple HTML/CSS/JS app with the Clou
 
 ## My Process - Key Takeaways
 
-1. **Picking the right inspiration** - I needed inspiration to set the tone and direction of the article (like creating a moodboard, but for documentation). Cloudinary blog posts were helpful for ideas, but not the right fit. The [JavaScript quick start](https://cloudinary.com/documentation/javascript_quick_start) and [integration guide](https://cloudinary.com/documentation/javascript_integration) gave me the right kind of inspiration to build from.
+1. **Picking the right inspiration** - I needed inspiration to set the tone and direction of the article (like creating a moodboard, but for documentation). Cloudinary blog posts were helpful for ideas, but not the right fit. The [JavaScript quick start](https://cloudinary.com/documentation/javascript_quick_start) and [JavaScript SDK integration guide](https://cloudinary.com/documentation/javascript_integration) gave me the right kind of inspiration to build from.
 
 2. **Building a systematic structure** - While working, I realized I needed a consistent structure for the steps - both to make my writing more consistent and to help the reader get familiar with the flow. I decided that each step would follow this pattern:
 

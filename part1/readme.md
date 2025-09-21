@@ -3,9 +3,9 @@
 In this challenge, I experimented with Cloudinary transformation URLs to achieve a given end result, and also added my name on top of the image.
 
 The URL I created is:  
-`
+```js
 https://res.cloudinary.com/demo/image/upload/c_fill,h_565,w_283,g_face/e_cartoonify/co_rgb:828488,e_shadow:30,x_3/co_rgb:8C8F8B,e_shadow:30,y_1/co_rgb:FBFCF9,e_shadow:30,x_-3/co_rgb:EEEEEE,e_shadow:30,y_-1/a_15/co_rgb:91542480,l_text:Times_80_bold:Maor/fl_layer_apply,g_north_west,y_20,x_20/smiling_man.jpg
-`
+```
 
 The images are:  
 ![Scaffold step screenshot](images/reault.PNG)  

@@ -127,7 +127,7 @@ const cld = new Cloudinary({ cloud: { cloudName: CLOUD_NAME } });
 
 let myImage = cld.image(PUBLIC_ID);
 ```
-This example connects to the Cloudinary demo account (`demo`), which already includes the `sample.jpg` image.
+This example connects to the Cloudinary `demo` account, which already includes the `sample.jpg` image.
 
 <details>
 <summary>More info about Configuration...</summary>

@@ -26,13 +26,13 @@ Transformations let you dynamically resize, crop, adjust quality, and apply effe
 
 ### Why use the JavaScript SDK?
 
-Transformations can be applied by manually constructing delivery URLs. However, the JavaScript SDK makes this process simpler and less error-prone by providing a clear, chainable API for defining transformations in code. Behind the scenes, both approaches achieve the same result.
+Transformations can be applied by manually constructing delivery URLs. However, the JavaScript SDK makes this process simpler and less error-prone by providing a clear API for defining transformations in code. Behind the scenes, both approaches achieve the same result.
 
 ## 1. Prepare the HTML and CSS scaffold
 
-The HTML and CSS are provided so you can focus entirely on the JavaScript SDK.
+The HTML and CSS are provided so you can focus entirely on the JavaScript code.
 
-**Project layout**
+### Project layout
 
 ```
 / (project root)
@@ -219,7 +219,7 @@ The `overlay()` method adds a text layer on top of the base image. In this examp
 
 In the Cloudinary SDK, **actions** and **effects** serve different purposes:
 
-- **Actions** describe transformations that *change the structure* of your asset. For example, `overlay()` places text on top of the original asset.
+- **Actions** describe transformations that *change the structure* of your asset. For example, `overlay()` places layers, like text layers, on top of the original asset.
 - **Effects** (like `cartoonify()`) apply *visual filters or stylistic changes* to the asset.
 
 Both are part of the same transformation pipeline, and you can stack actions with effects.
@@ -228,7 +228,7 @@ Both are part of the same transformation pipeline, and you can stack actions wit
 <details>
 <summary>More info about text overlays...</summary>
 
-See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays) to learn more about about fonts, styling, positioning, and encoding.
+See the [Text overlays guide](https://cloudinary.com/documentation/layers#text_overlays) to learn more about fonts, styling, positioning, and encoding.
 </details>
 
 ## 6. Implement Crop to square
@@ -242,7 +242,7 @@ import { fill } from "https://cdn.skypack.dev/@cloudinary/url-gen/actions/resize
 import { autoGravity } from "https://cdn.skypack.dev/@cloudinary/url-gen/qualifiers/gravity";
 ```
 
-Add a click listener to the **Crop to square** button. When clicked, it resizes the `CloudinaryImage` to a 1:1 aspect ratio and re-renders it:
+Add a click listener to the **Crop to square** button. When clicked, it resizes the `CloudinaryImage` and re-renders it.
 
 ```js
 document.getElementById("crop-btn").addEventListener("click", () => {
@@ -300,7 +300,7 @@ document.getElementById("genremove-btn").addEventListener("click", () => {
 
 `generativeRemove()` uses AI to remove a **single object or region** that matches your prompt and fills the gap with realistic pixels. Here the prompt is `"bee"`.
 
-**Try it yourself:** Replace `"bee"` with `"tree"`, `"person"`, or `"logo"` to remove different elements. Use more descriptive phrases, like `"red flower"` or `"text on the sign"`, to target specific details.
+**Try it yourself:** Replace `"bee"` with your own prompt and observe the result.
 
 ![Scaffold step screenshot](images/7-generative.jpg)
 
@@ -323,11 +323,11 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 });
 ```
 
-Why recreate the object? Each transformation you apply - such as crop, overlay, or cartoonify - is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
+Why recreate the object? Each transformation you apply is appended to the same `myImage` instance. As a result, transformations accumulate. By instantiating a new CloudinaryImage that points to the original asset, you reset the state and restore the image to its unmodified form.
 
 ## Summary
 
-In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly, and how the SDK makes them easy to apply with clean, reusable code.
+In this tutorial, you built a simple HTML/CSS/JS app that loads an image from Cloudinary and applies transformations using the JavaScript SDK. You've experienced firsthand how transformations let you adapt images on the fly, and how the SDK makes them easy to implement with clean, reusable code.
 
 ## View the completed code
 
@@ -336,5 +336,5 @@ You can find the full source code for this tutorial on [GitHub](https://github.c
 ## Follow-up ideas
 Here are some ideas to keep exploring:
 1. **Stack transformations**: Try applying several transformations in a row (for example, add text, then crop, then cartoonify) to see how they accumulate on the same image.
-2. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations you can apply.
-3. **Use your own image**: Swap in assets from your own Cloudinary account to make the demo personal.
+2. **Try more transformations**: Check out [Cloudinary's transformation reference](https://cloudinary.com/documentation/transformation_reference) and experiment with other transformations.
+3. **Use your own image**: Swap in assets from your own Cloudinary account (by changing the `CLOUD_NAME` and `PUBLIC_ID`) to make the demo personal.
